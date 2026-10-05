@@ -1,0 +1,20 @@
+{
+  "name": "@gigradar/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pure TypeScript: schemas, fit scoring, proposal prompts, digest templates, plan constants. No I/O, no secrets — can be moved behind the API or into a private submodule.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.3"
+  }
+}

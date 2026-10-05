@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="1200" height="820" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+<title id="t">GigRadar architecture</title>
+<desc id="d">A Chrome extension and a dashboard talk to one Hono API inside a Next.js deployment. The API uses a shared core package for scoring and prompts, Postgres for data, an LLM provider for drafts, Stripe for billing and licensing, and Resend for the digest. The extension only prefills a proposal; the freelancer submits it.</desc>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2dd4bf"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b7782"/></marker>
+<marker id="y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f2cc60"/></marker>
+</defs>
+<rect width="1200" height="820" rx="20" fill="#0a0f12"/>
+<rect x="30" y="24" width="1140" height="190" rx="16" fill="#0f161b" stroke="#1f2a31" stroke-width="1.5"/>
+<text x="52" y="54" font-size="13" font-weight="600" fill="#6b7782" letter-spacing="0.6">Your browser</text>
+<rect x="60" y="70" width="300" height="120" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="210.0" y="100" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Dashboard</text>
+<text x="210.0" y="124" font-size="13" fill="#9aa7b2" text-anchor="middle">profile · matches · digest</text>
+<text x="210.0" y="144" font-size="13" fill="#9aa7b2" text-anchor="middle">plan, license key, export/delete</text>
+<rect x="450" y="70" width="300" height="120" rx="12" fill="#0c2422" stroke="#2dd4bf" stroke-width="1.6"/>
+<text x="600.0" y="100" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Chrome extension (MV3)</text>
+<text x="600.0" y="124" font-size="13" fill="#9aa7b2" text-anchor="middle">parsers · content script</text>
+<text x="600.0" y="144" font-size="13" fill="#9aa7b2" text-anchor="middle">popup · background worker</text>
+<text x="600.0" y="164" font-size="13" fill="#9aa7b2" text-anchor="middle">license key never reaches the page</text>
+<rect x="840" y="70" width="300" height="120" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="990.0" y="100" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Job board page</text>
+<text x="990.0" y="124" font-size="13" fill="#9aa7b2" text-anchor="middle">Upwork · Fiverr · Freelancer</text>
+<text x="990.0" y="144" font-size="13" fill="#9aa7b2" text-anchor="middle">or the built-in fixture board</text>
+<text x="990.0" y="164" font-size="13" fill="#9aa7b2" text-anchor="middle">(the supported demo path)</text>
+<path d="M840 112 L752 112" fill="none" stroke="#2dd4bf" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="796" y="100" font-size="12" font-weight="500" fill="#2dd4bf" text-anchor="middle">① you press Scan</text>
+<path d="M752 158 L838 158" fill="none" stroke="#f2cc60" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#y)"/>
+<text x="796" y="178" font-size="12" font-weight="500" fill="#f2cc60" text-anchor="middle">③ prefill only</text>
+<rect x="30" y="290" width="1140" height="200" rx="16" fill="#0f161b" stroke="#1f2a31" stroke-width="1.5"/>
+<text x="52" y="320" font-size="13" font-weight="600" fill="#6b7782" letter-spacing="0.6">apps/web — one Next.js deployment (Vercel)</text>
+<rect x="60" y="340" width="300" height="120" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="210.0" y="370" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Next.js App Router</text>
+<text x="210.0" y="394" font-size="13" fill="#9aa7b2" text-anchor="middle">landing · auth · dashboard</text>
+<text x="210.0" y="414" font-size="13" fill="#9aa7b2" text-anchor="middle">Better Auth sessions (HTTP-only)</text>
+<rect x="450" y="340" width="300" height="120" rx="12" fill="#0c2422" stroke="#2dd4bf" stroke-width="1.6"/>
+<text x="600.0" y="370" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Hono API  /api</text>
+<text x="600.0" y="394" font-size="13" fill="#9aa7b2" text-anchor="middle">license gate · entitlements · quotas</text>
+<text x="600.0" y="414" font-size="13" fill="#9aa7b2" text-anchor="middle">ingest · match · draft · digest · billing</text>
+<text x="600.0" y="434" font-size="13" fill="#9aa7b2" text-anchor="middle">(apps/api — also runs standalone)</text>
+<rect x="840" y="340" width="300" height="120" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="990.0" y="370" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">packages/core</text>
+<text x="990.0" y="394" font-size="13" fill="#9aa7b2" text-anchor="middle">fit-v1 scorer · draft prompts</text>
+<text x="990.0" y="414" font-size="13" fill="#9aa7b2" text-anchor="middle">digest renderer · locked plan table</text>
+<text x="990.0" y="434" font-size="13" fill="#9aa7b2" text-anchor="middle">pure TypeScript, unit-tested</text>
+<path d="M210 190 L210 338" fill="none" stroke="#2dd4bf" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M360 400 L448 400" fill="none" stroke="#2dd4bf" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M752 400 L838 400" fill="none" stroke="#2dd4bf" stroke-width="1.8" marker-end="url(#a)"/>
+<path d="M600 192 L600 338" fill="none" stroke="#2dd4bf" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="612" y="268" font-size="12" font-weight="500" fill="#2dd4bf" text-anchor="start">② listings + license key</text>
+<rect x="30" y="560" width="1140" height="220" rx="16" fill="#0f161b" stroke="#1f2a31" stroke-width="1.5"/>
+<text x="52" y="590" font-size="13" font-weight="600" fill="#6b7782" letter-spacing="0.6">Backing services</text>
+<rect x="60" y="610" width="200" height="140" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="160.0" y="640" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Postgres</text>
+<text x="160.0" y="664" font-size="13" fill="#9aa7b2" text-anchor="middle">Neon / Supabase</text>
+<text x="160.0" y="684" font-size="13" fill="#9aa7b2" text-anchor="middle">users · profiles · jobs</text>
+<text x="160.0" y="704" font-size="13" fill="#9aa7b2" text-anchor="middle">matches · drafts · licenses</text>
+<text x="160.0" y="724" font-size="13" fill="#9aa7b2" text-anchor="middle">usage · audit</text>
+<rect x="280" y="610" width="200" height="140" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="380.0" y="640" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">LLM provider</text>
+<text x="380.0" y="664" font-size="13" fill="#9aa7b2" text-anchor="middle">Anthropic · OpenAI-style</text>
+<text x="380.0" y="684" font-size="13" fill="#9aa7b2" text-anchor="middle">job text = untrusted data</text>
+<text x="380.0" y="704" font-size="13" fill="#9aa7b2" text-anchor="middle">JSON-only · zod-validated</text>
+<text x="380.0" y="724" font-size="13" fill="#9aa7b2" text-anchor="middle">template fallback if down</text>
+<rect x="500" y="610" width="200" height="140" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="600.0" y="640" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Stripe (test mode)</text>
+<text x="600.0" y="664" font-size="13" fill="#9aa7b2" text-anchor="middle">Checkout · Portal</text>
+<text x="600.0" y="684" font-size="13" fill="#9aa7b2" text-anchor="middle">signed webhook →</text>
+<text x="600.0" y="704" font-size="13" fill="#9aa7b2" text-anchor="middle">plan + license key</text>
+<rect x="720" y="610" width="200" height="140" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="820.0" y="640" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Resend</text>
+<text x="820.0" y="664" font-size="13" fill="#9aa7b2" text-anchor="middle">daily digest email</text>
+<text x="820.0" y="684" font-size="13" fill="#9aa7b2" text-anchor="middle">with the submit link</text>
+<text x="820.0" y="704" font-size="13" fill="#9aa7b2" text-anchor="middle">(outbox if no key)</text>
+<rect x="940" y="610" width="200" height="140" rx="12" fill="#131c22" stroke="#2b3942" stroke-width="1.6"/>
+<text x="1040.0" y="640" font-size="16" font-weight="650" fill="#e6edf3" text-anchor="middle">Vercel Cron</text>
+<text x="1040.0" y="664" font-size="13" fill="#9aa7b2" text-anchor="middle">daily digest trigger</text>
+<text x="1040.0" y="684" font-size="13" fill="#9aa7b2" text-anchor="middle">Bearer CRON_SECRET</text>
+<path d="M520 462 C520 540 160.0 540 160.0 608" fill="none" stroke="#6b7782" stroke-width="1.8" marker-end="url(#g)" marker-start="url(#g)"/>
+<path d="M560 462 C560 530 380.0 530 380.0 608" fill="none" stroke="#6b7782" stroke-width="1.8" marker-end="url(#g)"/>
+<path d="M640 462 C640 530 600.0 530 600.0 608" fill="none" stroke="#6b7782" stroke-width="1.8" marker-end="url(#g)" marker-start="url(#g)"/>
+<path d="M680 462 C680 540 820.0 540 820.0 608" fill="none" stroke="#6b7782" stroke-width="1.8" marker-end="url(#g)"/>
+<path d="M1040 608 C1040 520 740 520 740 462" fill="none" stroke="#6b7782" stroke-width="1.8" marker-end="url(#g)"/>
+<text x="600" y="792" font-size="12.5" font-weight="500" fill="#f2cc60" text-anchor="middle">Nothing is ever submitted by GigRadar. The human reads the draft, ticks the checklist, and presses Submit on the marketplace.</text>
+</svg>
