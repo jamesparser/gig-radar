@@ -1,5 +1,7 @@
 # GigRadar
 
+
+**Live demo:** https://gig-radar-omega.vercel.app
 **GigRadar finds the gigs that fit and drafts the pitch — you close the deal.**
 
 A skill-fit job radar and AI proposal co-pilot for freelancers on Upwork, Fiverr and Freelancer. You tell it what you're good at; a Chrome extension scores the listings you browse (0–100, with the reasons); on a paid plan it drafts the proposal — cover letter, three milestones, questions for the client, and a checklist of *what you still must do* — and emails you a daily digest with a link to submit. **You read it, edit it, and press Submit. GigRadar never submits anything for you.**

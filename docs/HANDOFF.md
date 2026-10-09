@@ -13,20 +13,20 @@ The code is built and verified locally. These steps need **your accounts, your k
 
 - [ ] Neon (or Supabase) database → `DATABASE_URL`.
 - [ ] Vercel project, Root Directory `apps/web`, env vars set, deployed. `/api/health` returns `ok: true` with `db: "postgres"`.
-- [ ] Stripe **test** keys → `npm run stripe:setup -- --webhook-url https://<app>/api/stripe/webhook` → add the printed values to Vercel → redeploy → enable the Customer Portal.
+- [ ] Stripe **test** keys → `npm run stripe:setup -- --webhook-url https://gig-radar-omega.vercel.app/api/stripe/webhook` → add the printed values to Vercel → redeploy → enable the Customer Portal.
 - [ ] Optional: `ANTHROPIC_API_KEY` (real AI drafts), `RESEND_API_KEY` (real digest email), GitHub OAuth.
 - [ ] Put the live URL into the README header and `docs/SUBMISSION.md`.
 
 ## 3. Extension
 
-- [ ] `GIGRADAR_API_ORIGIN=https://<app> npm run build:extension`, then zip `packages/extension/dist` and attach it to a GitHub release.
+- [ ] `GIGRADAR_API_ORIGIN=https://gig-radar-omega.vercel.app npm run build:extension`, then zip `packages/extension/dist` and attach it to a GitHub release.
 - [ ] Load unpacked once yourself and run the smoke test in DEPLOY.md §8, including a real Stripe test checkout (this has **not** been run against Stripe from this repo).
 
 ## 4. Record and submit
 
 - [ ] Record the 2–5 minute video following [DEMO-SCRIPT.md](DEMO-SCRIPT.md) (you record it; nothing here can).
 - [ ] Pitch deck (recommended by the rules). Ask and I'll draft one from `SUBMISSION.md`.
-- [ ] Fill the Devpost form from [SUBMISSION.md](SUBMISSION.md); fill the **[fill]** placeholders (live URL, video, deck, release).
+- [ ] Fill the Devpost form from [SUBMISSION.md](SUBMISSION.md); fill the **https://gig-radar-omega.vercel.app** placeholders (live URL, video, deck, release).
 - [ ] Re-read the hackathon's current rules page before submitting: eligibility, required fields, and any "disqualification" rules, since the rules can change after a prompt was written.
 - [ ] Submit before the deadline above and keep the confirmation.
 
