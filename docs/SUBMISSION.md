@@ -1,6 +1,6 @@
 # Submission copy (Devpost) — Galuxium Nexus V2
 
-Draft text for the submission form, written to be pasted and trimmed. Everything claimed here is true of the repository as built; items marked **https://gig-radar-omega.vercel.app** depend on your deployment. Replace nothing with invented numbers: there are no customers or revenue yet, and the copy says so.
+Draft text for the submission form, written to be pasted and trimmed. Everything claimed here is true of the repository as built; items marked **[fill]** depend on your deployment. Replace nothing with invented numbers: there are no customers or revenue yet, and the copy says so.
 
 ---
 
@@ -14,11 +14,11 @@ GigRadar finds the gigs that fit and drafts the pitch — you close the deal.
 
 ## Links
 
-- Live app (HTTPS): **[fill — Vercel URL]**
+- Live app (HTTPS): **https://gig-radar-omega.vercel.app**
 - Public repo: https://github.com/jamesparser/gig-radar
-- Demo video (2–5 min): **https://gig-radar-omega.vercel.app**
+- Demo video (2–5 min): **[fill — YouTube/Loom after you record]**
 - Pitch deck: **[fill, recommended]**
-- Chrome extension (unpacked build or release zip): in the repo release **https://gig-radar-omega.vercel.app**
+- Chrome extension: `packages/extension/gigradar-extension-live.zip` (also on GitHub release once published)
 
 ## Inspiration / the problem
 
