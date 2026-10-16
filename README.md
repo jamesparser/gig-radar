@@ -21,7 +21,7 @@ Captured from a local build on the fictional sample data, in template-draft mode
 | ![Badges on the fixture board](docs/screenshots/04-extension-badges-on-board.png) **Extension** — in-page badges on the built-in fixture board | ![Popup](docs/screenshots/05-extension-popup-draft.png) **Extension popup** — draft with the mandatory human checklist |
 | ![Prefill](docs/screenshots/06-prefill-human-submits.png) **Prefill** — the extension fills the box; the human presses Submit | |
 
-> Live demo: _set after deploy — see [docs/HANDOFF.md](docs/HANDOFF.md)_ · Stripe runs in **test mode** (card `4242 4242 4242 4242`) · Pitch/demo script: [docs/DEMO-SCRIPT.md](docs/DEMO-SCRIPT.md)
+> Live demo: https://gig-radar-omega.vercel.app · Pitch deck: [docs/GigRadar-pitch-deck.pdf](docs/GigRadar-pitch-deck.pdf) · Stripe runs in **test mode** (card `4242 4242 4242 4242`) · Pitch/demo script: [docs/DEMO-SCRIPT.md](docs/DEMO-SCRIPT.md)
 
 ---
 
@@ -36,7 +36,7 @@ Captured from a local build on the fictional sample data, in template-draft mode
 | **Parsers for the real Upwork / Fiverr / Freelancer sites** | **Best-effort and unverified.** Their markup is undocumented, changes often, and their terms restrict automation. The selectors in [`packages/extension/src/parsers`](packages/extension/src/parsers) are starting points, and only synthetic markup is tested. The **supported demo path is the built-in fixture board** (`/demo-board`, 11 fictional listings, documented `data-gr-*` markup). Any page that publishes schema.org `JobPosting` JSON-LD also works through a generic parser. |
 | Work bench (Studio): kickoff plan and first-deliverable outline | Built (P1). |
 | Multi-seat Studio | Seats are license keys on one account (Studio = 5). Not a full team/org model. |
-| Deployed instance | Not deployed from this repo's CI — see [docs/DEPLOY.md](docs/DEPLOY.md). |
+| Deployed instance | Live at https://gig-radar-omega.vercel.app (Vercel + Neon Postgres, Stripe test mode). Deployed from the CLI, not CI — see [docs/DEPLOY.md](docs/DEPLOY.md). |
 
 No fake customers, revenue or screenshots anywhere: every listing in the demo is fictional and labelled as such.
 
