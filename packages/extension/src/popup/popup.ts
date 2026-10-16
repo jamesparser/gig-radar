@@ -24,11 +24,13 @@ interface State {
   apiBase: string;
   autoScan: boolean;
   notice: string | null;
+  showSamples: boolean;
 }
 
 const st: State = {
   view: "main", tab: "page", me: null, scan: null, scanning: false, scanError: null, matches: null, matchesError: null,
   draft: null, draftingId: null, draftError: null, settingsError: null, busy: false, apiBase: DEFAULT_API_BASE, autoScan: false, notice: null,
+  showSamples: false,
 };
 
 const app = document.getElementById("app") as HTMLElement;
@@ -62,6 +64,13 @@ const openUrl = (u: string) => {
   const safe = safeHttp(u);
   if (safe) void chrome.tabs.create({ url: safe });
 };
+
+const isSampleSource = (s: string) => s === "fixture" || s === "sample" || s === "other";
+
+function sourceTag(source: string): HTMLElement {
+  const sample = isSampleSource(source);
+  return h("span", { class: sample ? "badge warn" : "badge" }, sample ? "SAMPLE BOARD" : source);
+}
 
 async function activeTab(): Promise<chrome.tabs.Tab | undefined> {
   const [t] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -254,6 +263,7 @@ function resultCard(item: IngestItem): HTMLElement {
       scoreBadge({ score: item.score, label: item.label, locked: item.locked }),
       h("div", {},
         h("div", { class: "title" }, item.title),
+        h("div", { class: "row" }, sourceTag(item.source), item.url ? h("span", { class: "note" }, safeHttp(item.url) ? new URL(safeHttp(item.url)!).hostname : "") : null),
         item.locked
           ? h("div", { class: "sum" }, "Saved, not scored — your Free weekly matches are used up. Pro scores everything.")
           : h("div", { class: "sum" }, item.summary ?? ""),
@@ -305,11 +315,15 @@ function pageTab(): HTMLElement {
   if (st.scanError) wrap.append(h("div", { class: "err", role: "alert" }, st.scanError));
   const s = st.scan;
   if (s) {
-    if (s.found === 0) wrap.append(h("p", { class: "note" }, s.note ?? "No listings found on this page."));
-    else {
+    if (s.found === 0) {
+      wrap.append(h("p", { class: "note" }, s.note ?? "No listings found on this page."));
+      if (s.parser !== "fixture") {
+        wrap.append(h("p", { class: "note" }, "GigRadar only scores listings that are on the page you scanned. It will not invent jobs. Open \u201cTop matches\u201d only for your saved history — anything tagged SAMPLE BOARD is practice data, not from this site."));
+      }
+    } else {
       const q = s.result?.quota;
       wrap.append(h("p", { class: "note" },
-        `Found ${s.found} listing${s.found === 1 ? "" : "s"} (${s.parser} parser). `,
+        `Found ${s.found} listing${s.found === 1 ? "" : "s"} on this page (${s.parser}). `,
         q && q.limit !== null ? `Free matches left this week: ${q.remaining}/${q.limit}. ` : "",
         s.note ?? "",
       ));
@@ -327,12 +341,28 @@ function topTab(): HTMLElement {
     if (!st.matchesError) wrap.append(h("p", { class: "note" }, h("span", { class: "spin" }), "Loading your best matches…"));
     return wrap;
   }
-  if (!st.matches.matches.length) wrap.append(h("p", {}, "No matches scored 45+ yet. Scan a listings page to get started."));
-  for (const m of st.matches.matches) {
+  const all = st.matches.matches;
+  const live = all.filter((m) => !isSampleSource(m.job.source));
+  const samples = all.filter((m) => isSampleSource(m.job.source));
+  wrap.append(h("p", { class: "note" }, "History from pages you scanned. SAMPLE BOARD items are practice listings from GigRadar — they are not live jobs from Upwork, Fiverr or Freelancer."));
+  wrap.append(h("label", { class: "check" },
+    h("input", {
+      type: "checkbox", checked: st.showSamples,
+      onChange: (e: Event) => { st.showSamples = (e.target as HTMLInputElement).checked; render(); },
+    }),
+    h("span", {}, `Show sample board listings (${samples.length})`),
+  ));
+  const rows = st.showSamples ? [...live, ...samples] : live;
+  if (!rows.length) {
+    wrap.append(h("p", {}, all.length
+      ? "No live marketplace matches yet. Scan a real listing page. Sample board entries are hidden — tick the box above only to review practice data."
+      : "No matches scored 45+ yet. Scan a listings page to get started."));
+  }
+  for (const m of rows) {
     wrap.append(h("div", { class: "card" },
       h("div", { class: "head" },
         scoreBadge({ score: m.score, label: m.label }),
-        h("div", {}, h("div", { class: "title" }, m.job.title), h("div", { class: "sum" }, m.summary), h("div", { class: "note" }, [m.job.source, m.job.budgetText].filter(Boolean).join(" · "))),
+        h("div", {}, h("div", { class: "title" }, m.job.title), h("div", { class: "sum" }, m.summary), h("div", { class: "row" }, sourceTag(m.job.source), h("span", { class: "note" }, m.job.budgetText ?? ""))),
       ),
       h("div", { class: "actions" },
         canDraft() ? h("button", { class: "btn small", type: "button", disabled: st.draftingId !== null, onClick: () => void draftFor(m.id, m.job.title) }, st.draftingId === m.id ? "Drafting…" : "Draft proposal") : null,
