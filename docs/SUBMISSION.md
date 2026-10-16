@@ -15,8 +15,9 @@ GigRadar finds the gigs that fit and drafts the pitch — you close the deal.
 ## Links
 
 - Live app (HTTPS): **https://gig-radar-omega.vercel.app**
+- Devpost: https://devpost.com/software/gigradar
 - Public repo: https://github.com/jamesparser/gig-radar
-- Demo video (2–5 min): https://github.com/jamesparser/gig-radar/releases/download/v1.0.0-nexus-v2/GigRadar-demo-nexus-v2-final.mp4 (TTS narration; replace with YouTube/Loom if judges require that host)
+- Demo video (2–5 min): https://youtu.be/RfSaSZIiDsE (unlisted) · backup mp4 on release
 - Pitch deck (PDF): https://github.com/jamesparser/gig-radar/blob/main/docs/GigRadar-pitch-deck.pdf
 - Chrome extension (zip, built for the live URL): https://github.com/jamesparser/gig-radar/releases/tag/v1.0.0-nexus-v2
 
